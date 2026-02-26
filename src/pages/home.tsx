@@ -205,6 +205,15 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
             >
+              {/* place your personal image above the card; drop a file named hero-photo.png (or jpg)
+                  into the public/ directory and reference it via the leading slash */}
+              <div className="mb-6">
+                <img
+                  src="/hero-photo.png"
+                  alt="Victor Anene"
+                  className="w-full rounded-lg shadow-lg"
+                />
+              </div>
               <Card className="overflow-hidden">
                 <div className="h-44 bg-gradient-to-br from-sky-600 via-sky-500 to-slate-900" />
                 <CardBody>

@@ -29,11 +29,15 @@ const socials = {
 } as const;
 
 function LogoMark() {
+  // swap the textual/colored mark for a static image stored in public/logo.png
+  // drop your desired logo image into the public folder and reference it here
   return (
     <div className="flex items-center gap-3">
-      <div className="grid size-10 place-items-center rounded-2xl bg-sky-600 text-white shadow-sm">
-        <span className="text-base font-black tracking-tight">VA</span>
-      </div>
+      <img
+        src="/logo.png"
+        alt="Victor Anene logo"
+        className="h-10 w-10 rounded-full object-cover"
+      />
       <div className="leading-tight">
         <p className="text-sm font-bold text-slate-900">Victor Anene</p>
         <p className="text-xs text-slate-600">Product • Venture • Growth</p>
