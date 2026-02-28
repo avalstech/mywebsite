@@ -36,7 +36,7 @@ function LogoMark() {
       <img
         src="/logos.png"
         alt="Victor Anene logo"
-        className="h-10 w-10 rounded-full object-cover"
+        className="h-10 w-10 rounded-xl object-cover ring-1 ring-slate-200"
       />
       <div className="leading-tight">
         <p className="text-sm font-bold text-slate-900">Victor Anene</p>
@@ -80,7 +80,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-dvh bg-white text-slate-900">
+    <div className="min-h-dvh bg-slate-50 text-slate-900">
       <a
         href="#content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900 focus:shadow"
@@ -88,7 +88,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
           <Link to="/" aria-label="Victor Anene">
             <LogoMark />
@@ -136,14 +136,16 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
 
       <main id="content">{children}</main>
 
-      <footer className="border-t border-slate-200 bg-white">
+      <footer className="border-t border-slate-200 bg-white/70 backdrop-blur">
         <Container className="py-10">
           <div className="grid gap-10 md:grid-cols-3">
             <div>
               <div className="flex items-center gap-3">
-                <div className="grid size-10 place-items-center rounded-2xl bg-sky-600 text-white">
-                  <span className="text-base font-black">VA</span>
-                </div>
+                <img
+                  src="/logos.png"
+                  alt="Victor Anene logo"
+                  className="h-10 w-10 rounded-xl object-cover ring-1 ring-slate-200"
+                />
                 <div>
                   <p className="text-sm font-bold">Victor Anene</p>
                   <p className="text-xs text-slate-600">Product leadership & venture building</p>
@@ -207,7 +209,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
           </div>
 
           <div className="mt-10 flex flex-col gap-2 border-t border-slate-200 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Victor Udoka Anene. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Victor Anene. All rights reserved.</p>
             <p>
               Built by Avalstechnologies.
               <span className="mx-2">•</span>
@@ -235,7 +237,7 @@ function SocialIcon({
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white p-2 text-slate-700 shadow-sm transition hover:bg-slate-50 hover:text-slate-900"
+      className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white p-2 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 hover:text-slate-900"
     >
       {children}
     </a>

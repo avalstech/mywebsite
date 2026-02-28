@@ -205,13 +205,12 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
             >
-              {/* place your personal image above the card; drop a file named hero-photo.png (or jpg)
-                  into the public/ directory and reference it via the leading slash */}
-              <div className="mb-6">
+              {/* Hero image */}
+              <div className="mx-auto mb-6 w-full max-w-md rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] lg:ml-auto lg:mr-0">
                 <img
-                  src="/hero-photo.png"
+                  src="/victor-hero.png"
                   alt="Victor Anene"
-                  className="w-full rounded-lg shadow-lg"
+                  className="h-[360px] w-full rounded-2xl object-cover object-top"
                 />
               </div>
               <Card className="overflow-hidden">
@@ -248,7 +247,7 @@ function Hero() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+    <div className="rounded-2xl border border-slate-200/80 bg-white px-4 py-3 shadow-sm">
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</p>
       <p className="mt-1 text-sm font-semibold text-slate-900">{value}</p>
     </div>
