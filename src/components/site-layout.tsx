@@ -36,7 +36,7 @@ function LogoMark() {
       <img
         src="/logos.png"
         alt="Victor Anene logo"
-        className="h-10 w-10 rounded-xl object-contain"
+        className="h-12 w-12 rounded-xl object-contain"
       />
       <div className="leading-tight">
         <p className="text-sm font-bold text-slate-900">Victor Udoka Anene</p>
@@ -144,7 +144,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
                 <img
                   src="/logos.png"
                   alt="Victor Anene logo"
-                  className="h-10 w-10 rounded-xl object-contain"
+                  className="h-12 w-12 rounded-xl object-contain"
                 />
                 <div>
                   <p className="text-sm font-bold">Victor Udoka Anene</p>
