@@ -97,8 +97,8 @@ export function Speaking() {
             <Card>
               <CardBody>
                 <p className="text-sm font-semibold">Contact</p>
-                <p className="mt-3 text-sm text-slate-600">Email: hello@victoranene.com</p>
-                <p className="mt-2 text-sm text-slate-600">WhatsApp: +234 (0) 000 000 0000</p>
+                <p className="mt-3 text-sm text-slate-600">Email: victoranene@1133incubators.com</p>
+                <p className="mt-2 text-sm text-slate-600">WhatsApp: +234 (0) 8084619757</p>
                 <div className="mt-6">
                   <LinkButton to="/contact" variant="secondary" className="w-full">
                     Request availability <ArrowRight className="size-4" />
