@@ -81,13 +81,13 @@ export function Speaking() {
               <CardBody>
                 <p className="text-sm font-semibold">Short bio</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  Victor Anene is a product leader and venture builder focused on clarity, speed, and trust. He helps teams ship useful products,
+                  Victor Udoka Anene is a product leader and venture builder focused on clarity, speed, and trust. He helps teams ship useful products,
                   build adoption, and reduce execution risk with practical decision frameworks.
                 </p>
 
                 <p className="mt-6 text-sm font-semibold">Long bio</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  Victor Anene works across product management, venture building, and growth. He partners with teams to define clear outcomes,
+                  Victor Udoka Anene works across product management, venture building, and growth. He partners with teams to define clear outcomes,
                   prioritize what matters, and execute fast iterations that customers adopt. His work often centers on trust systems for marketplaces,
                   pragmatic MVP delivery, and stakeholder alignment.
                 </p>
