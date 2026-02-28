@@ -211,6 +211,11 @@ function Hero() {
                   src="/victor-hero.png"
                   alt="Victor Udoka Anene"
                   className="h-[340px] w-full rounded-xl object-cover object-top"
+              <div className="mb-6">
+                <img
+                  src="/victor-hero.png"
+                  alt="Victor Anene"
+                  className="w-full rounded-lg shadow-lg"
                 />
               </div>
               <Card className="overflow-hidden">
