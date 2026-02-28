@@ -142,7 +142,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
             <div>
               <div className="flex items-center gap-3">
                 <div className="grid size-10 place-items-center rounded-2xl bg-sky-600 text-white">
-                  <span className="text-base font-black">VA</span>
+                  <span<link rel="icon" type="image/svg+xml" href="/victor-favicon.svg" /></span>
                 </div>
                 <div>
                   <p className="text-sm font-bold">Victor Anene</p>
