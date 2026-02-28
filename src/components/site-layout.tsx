@@ -19,13 +19,13 @@ import { Container, LinkButton } from "@/components/ui";
 
 const socials = {
   linkedin: "https://www.linkedin.com/in/victorudokaanene/",
-  twitter: "https://x.com/",
-  youtube: "https://www.youtube.com/",
-  instagram: "https://www.instagram.com/",
-  github: "https://github.com/",
-  email: "mailto:hello@victoranene.com",
-  phone: "tel:+2340000000000",
-  whatsapp: "https://wa.me/2340000000000?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.",
+  twitter: "https://x.com/UdokaAnene",
+  youtube: "https://www.youtube.com/@anenevictorudoka7080",
+  instagram: "https://www.instagram.com/udokacares/",
+  github: "https://github.com/avalstech",
+  email: "mailto:anenevictor@1133incubators.com",
+  phone: "tel:+2348084619757",
+  whatsapp: "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.",
 } as const;
 
 function LogoMark() {
@@ -34,7 +34,7 @@ function LogoMark() {
   return (
     <div className="flex items-center gap-3">
       <img
-        src="/logo.png"
+        src="/logos.png"
         alt="Victor Anene logo"
         className="h-10 w-10 rounded-full object-cover"
       />
