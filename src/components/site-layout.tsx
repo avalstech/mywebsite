@@ -207,9 +207,9 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
           </div>
 
           <div className="mt-10 flex flex-col gap-2 border-t border-slate-200 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Victor Anene. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Victor Udoka Anene. All rights reserved.</p>
             <p>
-              Built with React + Vite.
+              Built by Avalstechnologies.
               <span className="mx-2">•</span>
               <a className="hover:text-slate-700" href={socials.email}>
                 Contact
