@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="256" viewBox="0 0 512 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8D65A" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#F8D65A" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="256" rx="28" fill="#0B1220"/>
+  <rect x="18" y="18" width="476" height="220" rx="22" fill="url(#g)" opacity="0.22"/>
+  <circle cx="96" cy="128" r="54" fill="url(#g)" opacity="0.95"/>
+  <text x="96" y="145" text-anchor="middle" font-family="Inter, Arial" font-size="54" font-weight="800" fill="#0B1220">V</text>
+  <text x="172" y="118" font-family="Inter, Arial" font-size="26" font-weight="800" fill="#F8D65A">Logo Placeholder</text>
+  <text x="172" y="152" font-family="Inter, Arial" font-size="16" fill="#B9C2D0">Replace with your final brand mark</text>
+</svg>
