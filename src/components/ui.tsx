@@ -6,7 +6,7 @@ export const Container: React.FC<React.PropsWithChildren<{ className?: string }>
   className,
   children,
 }) => {
-  return <div className={cn("mx-auto w-full max-w-6xl px-4", className)}>{children}</div>;
+  return <div className={cn("mx-auto w-full max-w-7xl px-4 sm:px-6", className)}>{children}</div>;
 };
 
 export const Section: React.FC<
@@ -49,7 +49,7 @@ export const Card: React.FC<React.PropsWithChildren<{ className?: string }>> = (
   return (
     <div
       className={cn(
-        "rounded-2xl border border-slate-200 bg-white shadow-sm",
+        "rounded-3xl border border-slate-200/80 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)]",
         className
       )}
     >
@@ -72,7 +72,7 @@ export const Badge: React.FC<React.PropsWithChildren<{ className?: string }>> = 
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700",
+        "inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700",
         className
       )}
     >
@@ -91,16 +91,16 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", ...props }, ref) => {
     const base =
-      "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60";
+      "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60";
     const sizes = {
       sm: "h-9 px-4 text-sm",
       md: "h-11 px-5 text-sm",
     };
     const variants = {
-      primary: "bg-slate-900 text-white hover:bg-slate-800",
+      primary: "bg-slate-900 text-white hover:bg-slate-700 shadow-sm shadow-slate-900/20",
       secondary:
-        "bg-sky-600 text-white hover:bg-sky-700 shadow-sm shadow-sky-600/10",
-      ghost: "bg-transparent text-slate-900 hover:bg-slate-100",
+        "bg-sky-600 text-white hover:bg-sky-700 shadow-sm shadow-sky-600/20",
+      ghost: "bg-transparent text-slate-900 hover:bg-slate-100/80",
     };
 
     return (
@@ -132,15 +132,15 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
   external,
 }) => {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2";
+    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2";
   const sizes = {
     sm: "h-9 px-4 text-sm",
     md: "h-11 px-5 text-sm",
   };
   const variants = {
-    primary: "bg-slate-900 text-white hover:bg-slate-800",
-    secondary: "bg-sky-600 text-white hover:bg-sky-700",
-    ghost: "bg-transparent text-slate-900 hover:bg-slate-100",
+    primary: "bg-slate-900 text-white hover:bg-slate-700 shadow-sm shadow-slate-900/20",
+    secondary: "bg-sky-600 text-white hover:bg-sky-700 shadow-sm shadow-sky-600/20",
+    ghost: "bg-transparent text-slate-900 hover:bg-slate-100/80",
   };
 
   if (external) {
