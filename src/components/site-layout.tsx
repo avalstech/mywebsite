@@ -171,10 +171,10 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
               <p className="text-sm font-semibold">Connect</p>
               <div className="mt-3 grid gap-2 text-sm">
                 <a className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900" href={socials.email}>
-                  <Mail className="size-4" /> hello@victoranene.com
+                  <Mail className="size-4" /> anenevictor@1133incubators.com
                 </a>
                 <a className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900" href={socials.phone}>
-                  <Phone className="size-4" /> +234 (0) 000 000 0000
+                  <Phone className="size-4" /> +234 (0) 8084619757
                 </a>
                 <a
                   className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900"
