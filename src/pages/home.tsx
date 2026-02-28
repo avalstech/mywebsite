@@ -181,7 +181,7 @@ function Hero() {
                 Strategy begins the moment you decide what not to build.
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-                I’m Victor Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
+                I’m Victor Udoka Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
@@ -205,13 +205,12 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
             >
-              {/* place your personal image above the card; drop a file named hero-photo.png (or jpg)
-                  into the public/ directory and reference it via the leading slash */}
-              <div className="mb-6">
+              {/* Hero image */}
+              <div className="mx-auto mb-6 w-full max-w-md rounded-2xl border border-slate-200 bg-white p-2 shadow-sm lg:ml-auto lg:mr-0">
                 <img
-                  src="/hero-photo.png"
-                  alt="Victor Anene"
-                  className="w-full rounded-lg shadow-lg"
+                  src="/victor-hero.png"
+                  alt="Victor Udoka Anene"
+                  className="h-[340px] w-full rounded-xl object-cover object-top"
                 />
               </div>
               <Card className="overflow-hidden">

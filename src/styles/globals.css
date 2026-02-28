@@ -20,5 +20,6 @@ body {
 
 /* Improve focus visibility for keyboard users */
 :focus-visible {
-  outline: none;
+  outline: 2px solid rgb(14 165 233 / 0.9);
+  outline-offset: 2px;
 }
