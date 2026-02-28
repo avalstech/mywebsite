@@ -15,9 +15,9 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const CONTACT_EMAIL = "hello@victoranene.com";
+const CONTACT_EMAIL = "anenevictor@1133incubators.com";
 const WHATSAPP_LINK =
-  "https://wa.me/2340000000000?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.";
+  "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.";
 
 export function Contact() {
   const [status, setStatus] = React.useState<
@@ -93,8 +93,8 @@ export function Contact() {
                 <ContactCard
                   icon={Phone}
                   title="Phone"
-                  text="+234 (0) 000 000 0000"
-                  href="tel:+2340000000000"
+                  text="+234 (0) 8084619757"
+                  href="tel:+2348084619757"
                 />
               </div>
 
@@ -123,7 +123,7 @@ export function Contact() {
                   <Field label="Email" error={errors.email?.message}>
                     <input
                       className="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none ring-sky-400/20 transition focus:border-sky-300 focus:ring-4"
-                      placeholder="you@company.com"
+                      placeholder="anenevictor@1133incubators.com"
                       autoComplete="email"
                       {...register("email")}
                     />
