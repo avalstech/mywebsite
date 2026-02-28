@@ -35,11 +35,11 @@ function LogoMark() {
     <div className="flex items-center gap-3">
       <img
         src="/logos.png"
-        alt="Victor Anene logo"
+        alt="Victor Udoka Anene logo"
         className="h-10 w-10 rounded-full object-cover"
       />
       <div className="leading-tight">
-        <p className="text-sm font-bold text-slate-900">Victor Anene</p>
+        <p className="text-sm font-bold text-slate-900">Victor Udoka Anene</p>
         <p className="text-xs text-slate-600">Product • Venture • Growth</p>
       </div>
     </div>
@@ -90,7 +90,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
 
       <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
-          <Link to="/" aria-label="Victor Anene">
+          <Link to="/" aria-label="Victor Udoka Anene">
             <LogoMark />
           </Link>
 
@@ -141,11 +141,13 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
           <div className="grid gap-10 md:grid-cols-3">
             <div>
               <div className="flex items-center gap-3">
-                <div className="grid size-10 place-items-center rounded-2xl bg-sky-600 text-white">
-                  <span className="text-base font-black">VA</span>
-                </div>
+                <img
+                  src="/logos.png"
+                  alt="Victor Udoka Anene logo"
+                  className="h-10 w-10 rounded-full object-cover"
+                />
                 <div>
-                  <p className="text-sm font-bold">Victor Anene</p>
+                  <p className="text-sm font-bold">Victor Udoka Anene</p>
                   <p className="text-xs text-slate-600">Product leadership & venture building</p>
                 </div>
               </div>

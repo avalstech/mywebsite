@@ -181,7 +181,7 @@ function Hero() {
                 Strategy begins the moment you decide what not to build.
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-                I’m Victor Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
+                I’m Victor Udoka Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
@@ -206,6 +206,11 @@ function Hero() {
               transition={{ duration: 0.55, delay: 0.05 }}
             >
               {/* Hero image */}
+              <div className="mx-auto mb-6 w-full max-w-md rounded-2xl border border-slate-200 bg-white p-2 shadow-sm lg:ml-auto lg:mr-0">
+                <img
+                  src="/victor-hero.png"
+                  alt="Victor Udoka Anene"
+                  className="h-[340px] w-full rounded-xl object-cover object-top"
               <div className="mb-6">
                 <img
                   src="/victor-hero.png"
