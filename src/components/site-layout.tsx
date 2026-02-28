@@ -39,7 +39,7 @@ function LogoMark() {
         className="h-12 w-12 rounded-xl object-contain"
       />
       <div className="leading-tight">
-        <p className="text-sm font-bold text-slate-900">Victor Anene</p>
+        <p className="text-sm font-bold text-slate-900">Victor Udoka Anene</p>
         <p className="text-xs text-slate-600">Product • Venture • Growth</p>
       </div>
     </div>
@@ -90,7 +90,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
 
       <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
-          <Link to="/" aria-label="Victor Anene">
+          <Link to="/" aria-label="Victor Udoka Anene">
             <LogoMark />
           </Link>
 
@@ -147,7 +147,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
                   className="h-12 w-12 rounded-xl object-contain"
                 />
                 <div>
-                  <p className="text-sm font-bold">Victor Anene</p>
+                  <p className="text-sm font-bold">Victor Udoka Anene</p>
                   <p className="text-xs text-slate-600">Product leadership & venture building</p>
                 </div>
               </div>

@@ -181,7 +181,7 @@ function Hero() {
                 Strategy begins the moment you decide what not to build.
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-                I’m Victor Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
+                I’m Victor Udoka Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
