@@ -213,7 +213,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
             <p>
               Built by Avalstechnologies.
               <span className="mx-2">•</span>
-              <a className="hover:text-slate-700" href={socials.email}>
+              <a className="hover:text-slate-700" href={bookacall@avalstech.com}>
                 Contact
               </a>
             </p>
