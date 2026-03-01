@@ -24,6 +24,7 @@ const socials = {
   instagram: "https://www.instagram.com/udokacares/",
   github: "https://github.com/avalstech",
   email: "mailto:anenevictor@1133incubators.com",
+  email2:bookacall@avalstech.com, 
   phone: "tel:+2348084619757",
   whatsapp: "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.",
 } as const;
@@ -213,7 +214,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
             <p>
               Built by Avalstechnologies.
               <span className="mx-2">•</span>
-              <a className="hover:text-slate-700" href={bookacall@avalstech.com}>
+              <a className="hover:text-slate-700" href={socials.email2}>
                 Contact
               </a>
             </p>
