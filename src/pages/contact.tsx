@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
 
 import { Button, Card, CardBody, Container, Section, SectionHeading } from "@/components/ui";
+import { profile, profileLinks } from "@/config/profile";
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -15,9 +16,9 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const CONTACT_EMAIL = "anenevictor@1133incubators.com";
-const WHATSAPP_LINK =
-  "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.";
+const CONTACT_EMAIL = profile.email;
+const WHATSAPP_LINK = profile.whatsappUrl;
+const FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
 
 export function Contact() {
   const [status, setStatus] = React.useState<
@@ -38,29 +39,41 @@ export function Contact() {
   const onSubmit = async (values: FormValues) => {
     setStatus({ type: "idle" });
 
+    if (!FORM_ENDPOINT) {
+      setStatus({
+        type: "error",
+        text: "Contact form is not configured yet. Please set VITE_CONTACT_FORM_ENDPOINT.",
+      });
+      return;
+    }
+
     try {
-      const subject = encodeURIComponent(`Website inquiry from ${values.name}`);
-      const body = encodeURIComponent(
-        [
-          `Name: ${values.name}`,
-          `Email: ${values.email}`,
-          values.company ? `Company: ${values.company}` : "",
-          "",
-          values.message,
-          "",
-          "Sent from victoranene.com",
-        ]
-          .filter(Boolean)
-          .join("\n")
-      );
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          company: values.company ?? "",
+          message: values.message,
+          source: "victoranene.com",
+        }),
+      });
 
-      const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
 
-      setStatus({ type: "success", text: "Opening your email client…" });
+      setStatus({ type: "success", text: "Message sent successfully. I will reply via email shortly." });
       reset();
     } catch {
-      setStatus({ type: "error", text: "Something went wrong. Please email directly." });
+      setStatus({
+        type: "error",
+        text: "Unable to send right now. Please try again in a moment or email directly.",
+      });
     }
   };
 
@@ -77,12 +90,7 @@ export function Contact() {
               />
 
               <div className="mt-8 grid gap-4">
-                <ContactCard
-                  icon={Mail}
-                  title="Email"
-                  text={CONTACT_EMAIL}
-                  href={`mailto:${CONTACT_EMAIL}`}
-                />
+                <ContactCard icon={Mail} title="Email" text={CONTACT_EMAIL} href={profileLinks.email} />
                 <ContactCard
                   icon={MessageCircle}
                   title="WhatsApp"
@@ -93,13 +101,13 @@ export function Contact() {
                 <ContactCard
                   icon={Phone}
                   title="Phone"
-                  text="+234 (0) 8084619757"
-                  href="tel:+2348084619757"
+                  text={profile.phoneDisplay}
+                  href={profile.phoneHref}
                 />
               </div>
 
               <p className="mt-8 text-sm text-slate-500">
-                Replace contact placeholders with your real email and WhatsApp number before publishing.
+                Messages are sent directly to my inbox through a secure backend endpoint.
               </p>
             </div>
 
@@ -107,7 +115,7 @@ export function Contact() {
               <CardBody>
                 <h3 className="text-lg font-semibold">Send a message</h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  This form opens your default email client with a prefilled message.
+                  This form sends directly to my inbox. No external app is required.
                 </p>
 
                 <form className="mt-6 grid gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -123,7 +131,7 @@ export function Contact() {
                   <Field label="Email" error={errors.email?.message}>
                     <input
                       className="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none ring-sky-400/20 transition focus:border-sky-300 focus:ring-4"
-                      placeholder="anenevictor@1133incubators.com"
+                      placeholder={profile.email}
                       autoComplete="email"
                       {...register("email")}
                     />
@@ -147,7 +155,7 @@ export function Contact() {
                   </Field>
 
                   <Button type="submit" variant="secondary" disabled={isSubmitting}>
-                    {isSubmitting ? "Preparing…" : "Send"} <ArrowRight className="size-4" />
+                    {isSubmitting ? "Sending…" : "Send"} <ArrowRight className="size-4" />
                   </Button>
 
                   {status.type !== "idle" ? (
