@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
 
 import { Button, Card, CardBody, Container, Section, SectionHeading } from "@/components/ui";
+import { profile, profileLinks } from "@/config/profile";
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -15,9 +16,11 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const CONTACT_EMAIL = "anenevictor@1133incubators.com";
-const WHATSAPP_LINK =
-  "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.";
+const CONTACT_EMAIL = profile.email;
+const WHATSAPP_LINK = profile.whatsappUrl;
+const FORM_ENDPOINT =
+  import.meta.env.VITE_CONTACT_FORM_ENDPOINT ?? `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+
 
 export function Contact() {
   const [status, setStatus] = React.useState<
@@ -39,6 +42,30 @@ export function Contact() {
     setStatus({ type: "idle" });
 
     try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          company: values.company ?? "",
+          message: values.message,
+          _subject: `Website inquiry from ${values.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setStatus({ type: "success", text: "Message sent successfully. I will reply via email shortly." });
+      reset();
+    } catch {
       const subject = encodeURIComponent(`Website inquiry from ${values.name}`);
       const body = encodeURIComponent(
         [
@@ -54,13 +81,13 @@ export function Contact() {
           .join("\n")
       );
 
-      const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      const mailto = `${profileLinks.email}?subject=${subject}&body=${body}`;
       window.location.href = mailto;
 
-      setStatus({ type: "success", text: "Opening your email client…" });
-      reset();
-    } catch {
-      setStatus({ type: "error", text: "Something went wrong. Please email directly." });
+      setStatus({
+        type: "error",
+        text: "Couldn’t send directly. Opening your email client as fallback.",
+      });
     }
   };
 
@@ -81,7 +108,7 @@ export function Contact() {
                   icon={Mail}
                   title="Email"
                   text={CONTACT_EMAIL}
-                  href={`mailto:${CONTACT_EMAIL}`}
+                  href={profileLinks.email}
                 />
                 <ContactCard
                   icon={MessageCircle}
@@ -93,13 +120,13 @@ export function Contact() {
                 <ContactCard
                   icon={Phone}
                   title="Phone"
-                  text="+234 (0) 8084619757"
-                  href="tel:+2348084619757"
+                  text={profile.phoneDisplay}
+                  href={profile.phoneHref}
                 />
               </div>
 
               <p className="mt-8 text-sm text-slate-500">
-                Replace contact placeholders with your real email and WhatsApp number before publishing.
+                Prefer WhatsApp for urgent requests, or email me directly if your device cannot open a mail client.
               </p>
             </div>
 
@@ -107,7 +134,7 @@ export function Contact() {
               <CardBody>
                 <h3 className="text-lg font-semibold">Send a message</h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  This form opens your default email client with a prefilled message.
+                  This form sends directly to my inbox. If delivery fails, it falls back to your email client.
                 </p>
 
                 <form className="mt-6 grid gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -123,7 +150,7 @@ export function Contact() {
                   <Field label="Email" error={errors.email?.message}>
                     <input
                       className="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none ring-sky-400/20 transition focus:border-sky-300 focus:ring-4"
-                      placeholder="anenevictor@1133incubators.com"
+                      placeholder={profile.email}
                       autoComplete="email"
                       {...register("email")}
                     />
@@ -147,7 +174,7 @@ export function Contact() {
                   </Field>
 
                   <Button type="submit" variant="secondary" disabled={isSubmitting}>
-                    {isSubmitting ? "Preparing…" : "Send"} <ArrowRight className="size-4" />
+                    {isSubmitting ? "Sending…" : "Send"} <ArrowRight className="size-4" />
                   </Button>
 
                   {status.type !== "idle" ? (
