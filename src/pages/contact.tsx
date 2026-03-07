@@ -39,6 +39,30 @@ export function Contact() {
     setStatus({ type: "idle" });
 
     try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          company: values.company ?? "",
+          message: values.message,
+          _subject: `Website inquiry from ${values.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setStatus({ type: "success", text: "Message sent successfully. I will reply via email shortly." });
+      reset();
+    } catch {
       const subject = encodeURIComponent(`Website inquiry from ${values.name}`);
       const body = encodeURIComponent(
         [
@@ -57,10 +81,10 @@ export function Contact() {
       const mailto = `${profileLinks.email}?subject=${subject}&body=${body}`;
       window.location.href = mailto;
 
-      setStatus({ type: "success", text: "Opening your email client…" });
-      reset();
-    } catch {
-      setStatus({ type: "error", text: "Something went wrong. Please email directly." });
+      setStatus({
+        type: "error",
+        text: "Couldn’t send directly. Opening your email client as fallback.",
+      });
     }
   };
 
@@ -107,7 +131,7 @@ export function Contact() {
               <CardBody>
                 <h3 className="text-lg font-semibold">Send a message</h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  This form opens your default email client with a prefilled message.
+                  This form sends directly to my inbox. If delivery fails, it falls back to your email client.
                 </p>
 
                 <form className="mt-6 grid gap-4" onSubmit={handleSubmit(onSubmit)}>
@@ -147,7 +171,7 @@ export function Contact() {
                   </Field>
 
                   <Button type="submit" variant="secondary" disabled={isSubmitting}>
-                    {isSubmitting ? "Preparing…" : "Send"} <ArrowRight className="size-4" />
+                    {isSubmitting ? "Sending…" : "Send"} <ArrowRight className="size-4" />
                   </Button>
 
                   {status.type !== "idle" ? (
