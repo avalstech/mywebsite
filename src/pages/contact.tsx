@@ -18,9 +18,6 @@ type FormValues = z.infer<typeof schema>;
 
 const CONTACT_EMAIL = profile.email;
 const WHATSAPP_LINK = profile.whatsappUrl;
-const FORM_ENDPOINT =
-  import.meta.env.VITE_CONTACT_FORM_ENDPOINT ?? `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
-
 
 export function Contact() {
   const [status, setStatus] = React.useState<
