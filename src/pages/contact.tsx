@@ -38,6 +38,14 @@ export function Contact() {
   const onSubmit = async (values: FormValues) => {
     setStatus({ type: "idle" });
 
+    if (!FORM_ENDPOINT) {
+      setStatus({
+        type: "error",
+        text: "Contact form is not configured yet. Please set VITE_CONTACT_FORM_ENDPOINT.",
+      });
+      return;
+    }
+
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
