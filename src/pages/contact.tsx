@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
 
 import { Button, Card, CardBody, Container, Section, SectionHeading } from "@/components/ui";
+import { profile, profileLinks } from "@/config/profile";
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -15,9 +16,8 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const CONTACT_EMAIL = "anenevictor@1133incubators.com";
-const WHATSAPP_LINK =
-  "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.";
+const CONTACT_EMAIL = profile.email;
+const WHATSAPP_LINK = profile.whatsappUrl;
 
 export function Contact() {
   const [status, setStatus] = React.useState<
@@ -54,7 +54,7 @@ export function Contact() {
           .join("\n")
       );
 
-      const mailto = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      const mailto = `${profileLinks.email}?subject=${subject}&body=${body}`;
       window.location.href = mailto;
 
       setStatus({ type: "success", text: "Opening your email client…" });
@@ -81,7 +81,7 @@ export function Contact() {
                   icon={Mail}
                   title="Email"
                   text={CONTACT_EMAIL}
-                  href={`mailto:${CONTACT_EMAIL}`}
+                  href={profileLinks.email}
                 />
                 <ContactCard
                   icon={MessageCircle}
@@ -93,13 +93,13 @@ export function Contact() {
                 <ContactCard
                   icon={Phone}
                   title="Phone"
-                  text="+234 (0) 8084619757"
-                  href="tel:+2348084619757"
+                  text={profile.phoneDisplay}
+                  href={profile.phoneHref}
                 />
               </div>
 
               <p className="mt-8 text-sm text-slate-500">
-                Replace contact placeholders with your real email and WhatsApp number before publishing.
+                Prefer WhatsApp for urgent requests, or email me directly if your device cannot open a mail client.
               </p>
             </div>
 
@@ -123,7 +123,7 @@ export function Contact() {
                   <Field label="Email" error={errors.email?.message}>
                     <input
                       className="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none ring-sky-400/20 transition focus:border-sky-300 focus:ring-4"
-                      placeholder="anenevictor@1133incubators.com"
+                      placeholder={profile.email}
                       autoComplete="email"
                       {...register("email")}
                     />
