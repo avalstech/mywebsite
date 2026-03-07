@@ -62,6 +62,7 @@ export function Home() {
   return (
     <div>
       <Hero />
+      <QuickIntroSection />
       <Section>
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -155,13 +156,13 @@ export function Home() {
 
 function Hero() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden border-b border-slate-200/70 bg-white">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-24 left-1/2 h-72 w-[38rem] -translate-x-1/2 rounded-full bg-sky-200/40 blur-3xl" />
-        <div className="absolute -bottom-28 right-[-8rem] h-72 w-[34rem] rounded-full bg-slate-200/50 blur-3xl" />
+        <div className="absolute -top-20 left-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="absolute -bottom-24 right-[-8rem] h-72 w-[34rem] rounded-full bg-slate-200/50 blur-3xl" />
       </div>
 
-      <Section className="pb-10 pt-14 sm:pt-18">
+      <Section className="pb-14 pt-16 sm:pt-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <motion.div
@@ -177,14 +178,14 @@ function Hero() {
                 <Badge>Growth & partnerships</Badge>
               </div>
 
-              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+              <h1 className="mt-6 max-w-2xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.1]">
                 Strategy begins the moment you decide what not to build.
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-                I’m Victor Udoka Anene. I help teams define clear intent, ship useful products fast, and build trust through execution.
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                I’m Victor Udoka Anene. I help teams define clear intent, ship useful products fast, and build trust through disciplined execution.
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <LinkButton to="/contact" variant="secondary">
                   Hire me for product management <ArrowRight className="size-4" />
                 </LinkButton>
@@ -193,7 +194,7 @@ function Hero() {
                 </LinkButton>
               </div>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              <div className="mt-9 grid gap-3 sm:grid-cols-3">
                 <Stat label="Focus" value="Product + Venture" />
                 <Stat label="Approach" value="Clarity → Shipping" />
                 <Stat label="Outcome" value="Adoption + Trust" />
@@ -204,43 +205,63 @@ function Hero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
+              className="lg:pl-6"
             >
-              {/* Hero image */}
-              <div className="mx-auto mb-6 w-full max-w-md rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] lg:ml-auto lg:mr-0">
+              <div className="mx-auto w-full max-w-lg rounded-[2rem] border border-slate-200/80 bg-white p-3 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
                 <img
                   src="/victor-hero.png"
                   alt="Victor Anene"
-                  className="h-[360px] w-full rounded-2xl object-cover object-top"
+                  className="h-[450px] w-full rounded-[1.5rem] object-cover object-top"
                 />
               </div>
-              <Card className="overflow-hidden">
-                <div className="h-44 bg-gradient-to-br from-sky-600 via-sky-500 to-slate-900" />
-                <CardBody>
-                  <p className="text-sm font-semibold">Quick intro</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    I build practical systems for discovery, prioritization, and delivery, so teams can move fast without breaking trust.
-                  </p>
-
-                  <div className="mt-5 grid gap-3">
-                    <MiniItem title="Product strategy" text="Decision frameworks, priorities, and outcomes." />
-                    <MiniItem title="Execution" text="MVPs, sprints, and measurable releases." />
-                    <MiniItem title="Growth" text="Positioning, partnerships, and distribution loops." />
-                  </div>
-
-                  <div className="mt-6">
-                    <a
-                      href="#product-cta"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 hover:text-sky-800"
-                    >
-                      Let’s build something useful <ArrowRight className="size-4" />
-                    </a>
-                  </div>
-                </CardBody>
-              </Card>
             </motion.div>
           </div>
         </Container>
       </Section>
+    </div>
+  );
+}
+
+function QuickIntroSection() {
+  return (
+    <Section className="bg-slate-50/70">
+      <Container>
+        <Card className="border-slate-200/80 shadow-sm">
+          <CardBody className="p-8 sm:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">Quick intro</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              I build practical systems for discovery, prioritization, and delivery.
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+              So teams can move fast without breaking trust.
+            </p>
+
+            <div className="mt-7 grid gap-3 md:grid-cols-3">
+              <QuickIntroItem title="Product strategy" text="Decision frameworks, priorities, and outcomes." />
+              <QuickIntroItem title="Execution" text="MVPs, sprints, and measurable releases." />
+              <QuickIntroItem title="Growth" text="Positioning, partnerships, and distribution loops." />
+            </div>
+
+            <div className="mt-7">
+              <a
+                href="#product-cta"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 hover:text-sky-800"
+              >
+                Let’s build something useful <ArrowRight className="size-4" />
+              </a>
+            </div>
+          </CardBody>
+        </Card>
+      </Container>
+    </Section>
+  );
+}
+
+function QuickIntroItem({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-4">
+      <p className="text-sm font-semibold">{title}</p>
+      <p className="mt-1 text-sm text-slate-600">{text}</p>
     </div>
   );
 }
@@ -250,15 +271,6 @@ function Stat({ label, value }: { label: string; value: string }) {
     <div className="rounded-2xl border border-slate-200/80 bg-white px-4 py-3 shadow-sm">
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{label}</p>
       <p className="mt-1 text-sm font-semibold text-slate-900">{value}</p>
-    </div>
-  );
-}
-
-function MiniItem({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4">
-      <p className="text-sm font-semibold">{title}</p>
-      <p className="mt-1 text-sm text-slate-600">{text}</p>
     </div>
   );
 }

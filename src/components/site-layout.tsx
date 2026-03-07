@@ -3,12 +3,10 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   ArrowRight,
   Linkedin,
-  Twitter,
   Youtube,
   Instagram,
   Mail,
   Phone,
-  MessageCircle,
   Menu,
   X,
   Github,
@@ -182,7 +180,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <MessageCircle className="size-4" /> WhatsApp
+                  <WhatsAppIcon className="size-4" /> WhatsApp
                 </a>
               </div>
 
@@ -191,7 +189,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
                   <Linkedin className="size-4" />
                 </SocialIcon>
                 <SocialIcon href={socials.twitter} label="X">
-                  <Twitter className="size-4" />
+                  <XIcon className="size-4" />
                 </SocialIcon>
                 <SocialIcon href={socials.youtube} label="YouTube">
                   <Youtube className="size-4" />
@@ -242,6 +240,22 @@ function SocialIcon({
   );
 }
 
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.585-6.637 7.585H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153Zm-1.291 19.492h2.039L6.486 3.24H4.298L17.61 20.645Z" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="M20.52 3.48A11.84 11.84 0 0 0 12.06 0C5.52 0 .18 5.34.18 11.88c0 2.1.54 4.14 1.62 5.94L0 24l6.36-1.68a11.95 11.95 0 0 0 5.7 1.44h.06C18.66 23.76 24 18.42 24 11.88c0-3.18-1.26-6.18-3.48-8.4ZM12.12 21.72h-.06a9.88 9.88 0 0 1-5.04-1.38l-.36-.18-3.78.96 1.02-3.66-.24-.36a9.81 9.81 0 0 1-1.5-5.22c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.16 1.02 7.02 2.88a9.8 9.8 0 0 1 2.88 7.02c0 5.46-4.44 9.9-9.84 9.9Zm5.46-7.38c-.3-.18-1.8-.9-2.1-1.02-.24-.06-.42-.12-.6.18-.18.24-.72 1.02-.9 1.2-.18.18-.3.18-.6.06-1.68-.84-2.76-1.5-3.9-3.42-.3-.54.3-.48.9-1.62.12-.24.06-.42 0-.6-.06-.18-.6-1.44-.84-1.98-.24-.54-.42-.48-.6-.48h-.54c-.18 0-.48.06-.72.3-.24.24-.9.9-.9 2.22s.96 2.58 1.08 2.76c.12.18 1.92 2.94 4.68 4.14.66.3 1.2.48 1.62.6.66.18 1.26.18 1.74.12.54-.06 1.8-.72 2.04-1.44.24-.72.24-1.32.18-1.44-.06-.18-.24-.24-.54-.42Z" />
+    </svg>
+  );
+}
+
 function FloatingContact() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
@@ -252,7 +266,7 @@ function FloatingContact() {
         className="group inline-flex items-center justify-center rounded-2xl bg-emerald-600 p-3 text-white shadow-lg shadow-emerald-600/20 transition hover:translate-y-[-1px] hover:bg-emerald-700"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="size-5" />
+        <WhatsAppIcon className="size-5" />
         <span className="ml-0 w-0 overflow-hidden whitespace-nowrap text-sm font-semibold opacity-0 transition-all duration-200 group-hover:ml-2 group-hover:w-24 group-hover:opacity-100">
           WhatsApp
         </span>
