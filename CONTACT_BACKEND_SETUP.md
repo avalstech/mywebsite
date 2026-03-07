@@ -8,9 +8,6 @@ The frontend posts JSON directly to that endpoint from `src/pages/contact.tsx`.
 
 ## Recommended AWS setup (SES + API Gateway + Lambda)
 
-> Prefer copy-paste? Use `lambda/contactFormHandler.mjs` in this repository as your ready-to-deploy Lambda handler.
-
-
 1. **Verify sender/recipient in Amazon SES**
    - In SES, verify your domain/email (e.g., `anenevictor@1133incubators.com`).
    - If account is in SES sandbox, verify recipient too.

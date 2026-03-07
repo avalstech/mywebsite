@@ -18,7 +18,6 @@ type FormValues = z.infer<typeof schema>;
 
 const CONTACT_EMAIL = profile.email;
 const WHATSAPP_LINK = profile.whatsappUrl;
-const FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
 
 export function Contact() {
   const [status, setStatus] = React.useState<
@@ -59,7 +58,9 @@ export function Contact() {
           email: values.email,
           company: values.company ?? "",
           message: values.message,
-          source: "victoranene.com",
+          _subject: `Website inquiry from ${values.name}`,
+          _template: "table",
+          _captcha: "false",
         }),
       });
 
@@ -70,9 +71,27 @@ export function Contact() {
       setStatus({ type: "success", text: "Message sent successfully. I will reply via email shortly." });
       reset();
     } catch {
+      const subject = encodeURIComponent(`Website inquiry from ${values.name}`);
+      const body = encodeURIComponent(
+        [
+          `Name: ${values.name}`,
+          `Email: ${values.email}`,
+          values.company ? `Company: ${values.company}` : "",
+          "",
+          values.message,
+          "",
+          "Sent from victoranene.com",
+        ]
+          .filter(Boolean)
+          .join("\n")
+      );
+
+      const mailto = `${profileLinks.email}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+
       setStatus({
         type: "error",
-        text: "Unable to send right now. Please try again in a moment or email directly.",
+        text: "Couldn’t send directly. Opening your email client as fallback.",
       });
     }
   };
@@ -90,7 +109,12 @@ export function Contact() {
               />
 
               <div className="mt-8 grid gap-4">
-                <ContactCard icon={Mail} title="Email" text={CONTACT_EMAIL} href={profileLinks.email} />
+                <ContactCard
+                  icon={Mail}
+                  title="Email"
+                  text={CONTACT_EMAIL}
+                  href={profileLinks.email}
+                />
                 <ContactCard
                   icon={MessageCircle}
                   title="WhatsApp"
@@ -107,7 +131,7 @@ export function Contact() {
               </div>
 
               <p className="mt-8 text-sm text-slate-500">
-                Messages are sent directly to my inbox through a secure backend endpoint.
+                Prefer WhatsApp for urgent requests, or email me directly if your device cannot open a mail client.
               </p>
             </div>
 
@@ -115,7 +139,7 @@ export function Contact() {
               <CardBody>
                 <h3 className="text-lg font-semibold">Send a message</h3>
                 <p className="mt-2 text-sm text-slate-600">
-                  This form sends directly to my inbox. No external app is required.
+                  This form sends directly to my inbox. If delivery fails, it falls back to your email client.
                 </p>
 
                 <form className="mt-6 grid gap-4" onSubmit={handleSubmit(onSubmit)}>
