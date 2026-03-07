@@ -16,17 +16,14 @@ import {
 
 import { cn } from "@/lib/cn";
 import { Container, LinkButton } from "@/components/ui";
+import { profile, profileLinks } from "@/config/profile";
 
 const socials = {
-  linkedin: "https://www.linkedin.com/in/victorudokaanene/",
-  twitter: "https://x.com/UdokaAnene",
-  youtube: "https://www.youtube.com/@anenevictorudoka7080",
-  instagram: "https://www.instagram.com/udokacares/",
-  github: "https://github.com/avalstech",
-  email: "mailto:anenevictor@1133incubators.com",
-  email2:bookacall@avalstech.com, 
-  phone: "tel:+2348084619757",
-  whatsapp: "https://wa.me/2348084619757?text=Hi%20Victor%2C%20I%20found%20your%20website%20and%20would%20love%20to%20connect.",
+  ...profile.socials,
+  email: profileLinks.email,
+  businessContactEmail: profileLinks.businessContactEmail,
+  phone: profile.phoneHref,
+  whatsapp: profile.whatsappUrl,
 } as const;
 
 function LogoMark() {
@@ -36,11 +33,11 @@ function LogoMark() {
     <div className="flex items-center gap-3">
       <img
         src="/logos.png"
-        alt="Victor Anene logo"
+        alt={`${profile.shortName} logo`}
         className="h-12 w-12 rounded-xl object-contain"
       />
       <div className="leading-tight">
-        <p className="text-sm font-bold text-slate-900">Victor Udoka Anene</p>
+        <p className="text-sm font-bold text-slate-900">{profile.name}</p>
         <p className="text-xs text-slate-600">Product • Venture • Growth</p>
       </div>
     </div>
@@ -91,7 +88,7 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
 
       <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
-          <Link to="/" aria-label="Victor Udoka Anene">
+          <Link to="/" aria-label={profile.name}>
             <LogoMark />
           </Link>
 
@@ -144,12 +141,12 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
               <div className="flex items-center gap-3">
                 <img
                   src="/logos.png"
-                  alt="Victor Anene logo"
+                  alt={`${profile.shortName} logo`}
                   className="h-12 w-12 rounded-xl object-contain"
                 />
                 <div>
-                  <p className="text-sm font-bold">Victor Udoka Anene</p>
-                  <p className="text-xs text-slate-600">Product leadership & venture building</p>
+                  <p className="text-sm font-bold">{profile.name}</p>
+                  <p className="text-xs text-slate-600">{profile.roleSummary}</p>
                 </div>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-600">
@@ -174,10 +171,10 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
               <p className="text-sm font-semibold">Connect</p>
               <div className="mt-3 grid gap-2 text-sm">
                 <a className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900" href={socials.email}>
-                  <Mail className="size-4" /> anenevictor@1133incubators.com
+                  <Mail className="size-4" /> {profile.email}
                 </a>
                 <a className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900" href={socials.phone}>
-                  <Phone className="size-4" /> +234 (0) 8084619757
+                  <Phone className="size-4" /> {profile.phoneDisplay}
                 </a>
                 <a
                   className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900"
@@ -210,11 +207,11 @@ export function SiteLayout({ children }: React.PropsWithChildren) {
           </div>
 
           <div className="mt-10 flex flex-col gap-2 border-t border-slate-200 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Victor Anene. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {profile.shortName}. All rights reserved.</p>
             <p>
-              Built by Avalstechnologies.
+              Built by Avals Technologies.
               <span className="mx-2">•</span>
-              <a className="hover:text-slate-700" href={socials.email2}>
+              <a className="hover:text-slate-700" href={socials.businessContactEmail}>
                 Contact
               </a>
             </p>
