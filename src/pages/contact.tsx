@@ -133,6 +133,25 @@ export function Contact() {
               <p className="mt-8 text-sm text-slate-500">
                 Prefer WhatsApp for urgent requests, or email me directly if your device cannot open a mail client.
               </p>
+
+              <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <div
+                  className="badge-base LI-profile-badge"
+                  data-locale="en_US"
+                  data-size="medium"
+                  data-theme="light"
+                  data-type="VERTICAL"
+                  data-vanity="anenevictor"
+                  data-version="v1"
+                >
+                  <a
+                    className="badge-base__link LI-simple-link"
+                    href="https://ng.linkedin.com/in/anenevictor?trk=profile-badge"
+                  >
+                    Victor Anene
+                  </a>
+                </div>
+              </div>
             </div>
 
             <Card>
